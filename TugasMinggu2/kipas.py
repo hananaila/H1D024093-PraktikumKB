@@ -4,11 +4,8 @@ from skfuzzy import control as ctrl
 import matplotlib.pyplot as plt
 
 # 1. Definisi Variabel (Antecedent & Consequent)
-# Suhu: 0 - 40 C
 suhu = ctrl.Antecedent(np.arange(0, 41, 1), 'suhu')
-# Kelembapan: 0 - 100 %
 kelembapan = ctrl.Antecedent(np.arange(0, 101, 1), 'kelembapan')
-# Kecepatan Kipas: 0 - 100
 kipas = ctrl.Consequent(np.arange(0, 101, 1), 'kecepatan_kipas')
 
 # 2. Himpunan Fuzzy (Segitiga / trimf)
@@ -32,7 +29,6 @@ rule1 = ctrl.Rule(suhu['dingin'] & kelembapan['basah'], kipas['lambat'])
 rule2 = ctrl.Rule(suhu['normal'] & kelembapan['ideal'], kipas['sedang'])
 rule3 = ctrl.Rule(suhu['panas'] | kelembapan['kering'], kipas['cepat'])
 
-# 4. Sistem Kontrol & Simulasi
 mesin_kipas = ctrl.ControlSystem([rule1, rule2, rule3])
 simulasi = ctrl.ControlSystemSimulation(mesin_kipas)
 
