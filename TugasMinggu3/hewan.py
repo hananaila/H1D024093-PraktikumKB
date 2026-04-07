@@ -11,7 +11,7 @@ profit = ctrl.Antecedent(np.arange(0, 4000001, 10000), 'profit')
 
 stok = ctrl.Consequent(np.arange(0, 1001, 1), 'stok')
 
-# 2. Mendefinisikan Himpunan Fuzzy
+# 2. Mendefinisikan Himpunan Fuzzy berdasarkan grafik
 terjual['rendah'] = fuzz.trapmf(terjual.universe, [0, 0, 20, 40])
 terjual['sedang'] = fuzz.trimf(terjual.universe, [20, 50, 70])
 terjual['tinggi'] = fuzz.trapmf(terjual.universe, [50, 90, 100, 100])
@@ -31,7 +31,7 @@ profit['tinggi'] = fuzz.trapmf(profit.universe, [2500000, 3500000, 4000000, 4000
 stok['sedang'] = fuzz.trapmf(stok.universe, [0, 0, 600, 900])
 stok['banyak'] = fuzz.trapmf(stok.universe, [600, 900, 1000, 1000])
 
-# 3. Mendefinisikan Aturan (Rules)
+# 3. Mendefinisikan Rules
 rule1 = ctrl.Rule(terjual['tinggi'] & permintaan['tinggi'] & harga['murah'] & profit['tinggi'], stok['banyak'])
 rule2 = ctrl.Rule(terjual['tinggi'] & permintaan['tinggi'] & harga['murah'] & profit['sedang'], stok['sedang'])
 rule3 = ctrl.Rule(terjual['tinggi'] & permintaan['sedang'] & harga['murah'] & profit['sedang'], stok['sedang'])
@@ -54,26 +54,7 @@ simulasi_stok.compute()
 print("--- Hasil Studi Kasus 1: Udin Pet Shop ---")
 print(f"Output Stok Makanan yang optimal : {simulasi_stok.output['stok']:.2f} unit")
 
-# 7. Menampilkan Semua Grafik Himpunan Fuzzy
-# Grafik Input 1: Barang Terjual
-terjual.view()
-plt.title("Himpunan Fuzzy: Barang Terjual")
-
-# Grafik Input 2: Permintaan
-permintaan.view()
-plt.title("Himpunan Fuzzy: Permintaan")
-
-# Grafik Input 3: Harga
-harga.view()
-plt.title("Himpunan Fuzzy: Harga per Item")
-
-# Grafik Input 4: Profit
-profit.view()
-plt.title("Himpunan Fuzzy: Profit")
-
-# Grafik Output: Stok Makanan (dengan garis arsiran hasil perhitungan)
+# 7. Menampilkan Grafik
 stok.view(sim=simulasi_stok)
 plt.title("Grafik Output: Stok Makanan")
-
-# Tampilkan semua jendela grafik secara bersamaan
 plt.show()
