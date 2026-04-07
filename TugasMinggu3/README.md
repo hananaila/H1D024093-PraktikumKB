@@ -45,7 +45,7 @@ Script ini menyelesaikan studi kasus penentuan tingkat kepuasan di **Kantor Pela
 | Kemampuan Petugas | 50 |
 | Ketersediaan Sarpras | 90 |
 
-- **Rule Base:** Mengimplementasikan seluruh $3^4 = 81$ kemungkinan kombinasi aturan secara komprehensif sesuai instruksi tambahan dari Mas Aska melalui Discord.
+- **Rule Base:** Mengimplementasikan 81 kemungkinan kombinasi aturan secara komprehensif sesuai instruksi tambahan dari Mas Azka melalui Discord.
 - **Output:** Nilai *crisp* untuk persentase kepuasan pelayanan beserta grafik area fuzzifikasi.
 
 ---
