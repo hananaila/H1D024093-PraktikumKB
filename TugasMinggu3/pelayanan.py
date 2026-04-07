@@ -1,7 +1,9 @@
 import numpy as np
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
+import matplotlib.pyplot as plt
 
+# 1. Mendefinisikan Variabel Input dan Output
 kejelasan_informasi = ctrl.Antecedent(np.arange(0, 101, 1), 'kejelasan_informasi')
 kejelasan_persyaratan = ctrl.Antecedent(np.arange(0, 101, 1), 'kejelasan_persyaratan')
 kemampuan_petugas = ctrl.Antecedent(np.arange(0, 101, 1), 'kemampuan_petugas')
@@ -9,6 +11,7 @@ ketersediaan_sarpras = ctrl.Antecedent(np.arange(0, 101, 1), 'ketersediaan_sarpr
 
 kepuasan_pelayanan = ctrl.Consequent(np.arange(0, 401, 1), 'kepuasan_pelayanan')
 
+# 2. Mendefinisikan Himpunan Fuzzy berdasarkan grafik
 kejelasan_informasi["tidak_memuaskan"] = fuzz.trapmf(kejelasan_informasi.universe, [0, 0, 60, 75])
 kejelasan_informasi["cukup_memuaskan"] = fuzz.trimf(kejelasan_informasi.universe, [60, 75, 90])
 kejelasan_informasi["memuaskan"] = fuzz.trapmf(kejelasan_informasi.universe, [75, 90, 100, 100])
@@ -31,6 +34,7 @@ kepuasan_pelayanan["cukup_memuaskan"] = fuzz.trapmf(kepuasan_pelayanan.universe,
 kepuasan_pelayanan["memuaskan"] = fuzz.trapmf(kepuasan_pelayanan.universe, [250, 275, 325, 350])
 kepuasan_pelayanan["sangat_memuaskan"] = fuzz.trapmf(kepuasan_pelayanan.universe, [325, 350, 400, 400])
 
+# 3. Mendefinisikan Rules
 aturan1 = ctrl.Rule(kejelasan_informasi['tidak_memuaskan'] & kejelasan_persyaratan['tidak_memuaskan'] & kemampuan_petugas['tidak_memuaskan'] & ketersediaan_sarpras['tidak_memuaskan'], kepuasan_pelayanan['kurang_memuaskan'])
 aturan2 = ctrl.Rule(kejelasan_informasi['tidak_memuaskan'] & kejelasan_persyaratan['tidak_memuaskan'] & kemampuan_petugas['tidak_memuaskan'] & ketersediaan_sarpras['cukup_memuaskan'], kepuasan_pelayanan['cukup_memuaskan'])
 aturan3 = ctrl.Rule(kejelasan_informasi['tidak_memuaskan'] & kejelasan_persyaratan['tidak_memuaskan'] & kemampuan_petugas['tidak_memuaskan'] & ketersediaan_sarpras['memuaskan'], kepuasan_pelayanan['cukup_memuaskan'])
@@ -133,22 +137,28 @@ rules_list = [
     aturan73, aturan74, aturan75, aturan76, aturan77, aturan78, aturan79, aturan80, aturan81
 ]
 
-# Add all rules to the control system
+# 4. Membuat Control System dan Simulasi
 kepuasan_ctrl = ctrl.ControlSystem(rules_list)
-
-# Create the simulation
 kepuasan_sim = ctrl.ControlSystemSimulation(kepuasan_ctrl)
 
+# 5. Memasukkan Input dari Studi Kasus
 kepuasan_sim.input["kejelasan_informasi"] = 80
 kepuasan_sim.input["kejelasan_persyaratan"] = 60
 kepuasan_sim.input["kemampuan_petugas"] = 50
 kepuasan_sim.input["ketersediaan_sarpras"] = 90
 
+# 6. Melakukan Perhitungan dan Menampilkan Hasil
 kepuasan_sim.compute()
-kepuasan_pelayanan.view(sim=kepuasan_sim)
 hasil = kepuasan_sim.output["kepuasan_pelayanan"]
 
-print("output:", hasil)
+print("--- Hasil Studi Kasus 2: Pelayanan Masyarakat ---")
+print("Input Kejelasan Informasi   : 80")
+print("Input Kejelasan Persyaratan : 60")
+print("Input Kemampuan Petugas     : 50")
+print("Input Ketersediaan Sarpras  : 90")
+print(f"Output Tingkat Kepuasan Pelayanan : {hasil:.2f}")
 
-import matplotlib.pyplot as plt 
+# 7. Menampilkan Grafik
+kepuasan_pelayanan.view(sim=kepuasan_sim)
+plt.title("Grafik Output: Kepuasan Pelayanan")
 plt.show()
