@@ -128,17 +128,3 @@ Masukkan petal length: 1.4
 Masukkan petal width: 0.2
 Prediksi kelas: Iris-setosa
 ```
-
----
-
-## Struktur Repository
-
-```
-TugasMinggu7/
-│
-├── iris.py                 # Source code proyek
-├── iris.data               # Dataset iris
-├── README.md               # Dokumentasi proyek
-
-
-```
