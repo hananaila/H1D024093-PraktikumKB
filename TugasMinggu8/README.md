@@ -60,14 +60,13 @@ Proyek ini dibuat untuk memenuhi **Tugas Praktikum Kecerdasan Buatan (Pertemuan 
 | Atribut | Keterangan |
 |---------|------------|
 | **Sumber** | [Kaggle - Rock Paper Scissors Dataset](https://www.kaggle.com/datasets/drgfreeman/rockpaperscissors?resource=download)|
-| **Struktur Folder** | `rock/`, `paper/`, `scissors/` |
+| **Struktur Folder** | `rockpaperscissors/`, `rock.py`, `README.md` |
 | **Ukuran Gambar** | Diresize menjadi 150x150 pixel |
 | **Format Warna** | RGB (3 channel) |
 | **Data Splitting** | 80% training, 20% validation |
 
 ### Struktur Folder:
-```
-### Struktur Folder:
+
 ```
 TugasMinggu8/
 │
@@ -76,7 +75,7 @@ TugasMinggu8/
 │   ├── paper/
 │   └── scissors/
 │
-├── rock.py              # Source code 
+├── rock.py              # Source code utama
 └── README.md            # Dokumentasi proyek
 ```
 
