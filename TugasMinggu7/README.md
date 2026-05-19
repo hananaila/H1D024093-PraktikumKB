@@ -1,25 +1,8 @@
 # Klasifikasi Bunga Iris dengan Neural Network
 
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=flat&logo=tensorflow)](https://tensorflow.org)
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python)](https://python.org)
-[![License](https://img.shields.io/badge/License-Academic-blue.svg)]()
 
 > Implementasi Neural Network menggunakan TensorFlow/Keras untuk klasifikasi 3 spesies bunga Iris berdasarkan dataset dari UCI Machine Learning Repository.
-
----
-
-## Daftar Isi
-
-- [Tentang Proyek](#-tentang-proyek)
-- [Arsitektur Model](#-arsitektur-model)
-- [Dataset](#-dataset)
-- [Persyaratan](#-persyaratan)
-- [Cara Menjalankan](#-cara-menjalankan)
-- [Hasil yang Diharapkan](#-hasil-yang-diharapkan)
-- [Parameter Training](#-parameter-training)
-- [Contoh Output](#-contoh-output)
-- [Struktur Repository](#-struktur-repository)
-- [Referensi](#-referensi)
 
 ---
 
@@ -36,7 +19,7 @@ Proyek ini dibuat untuk memenuhi **Tugas Praktikum Kecerdasan Buatan (Pertemuan 
 
 ---
 
-## 🧠 Arsitektur Model
+## Arsitektur Model
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -156,5 +139,6 @@ TugasMinggu7/
 ├── iris.py                 # Source code proyek
 ├── iris.data               # Dataset iris
 ├── README.md               # Dokumentasi proyek
+
 
 ```
